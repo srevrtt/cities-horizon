@@ -3,7 +3,7 @@ project(CitiesHorizon VERSION 0.1)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
-set(SRCS src/main.cc)
+set(SRCS src/main.cc src/window.cc)
 
 add_subdirectory(dependencies/SDL)
 add_subdirectory(dependencies/SDL_image)
