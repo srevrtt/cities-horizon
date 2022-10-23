@@ -8,9 +8,10 @@
 #include <SDL_image.h>
 
 // Creates a new image with the specified size, position, and file path
-Image::Image(Window *window, int x, int y, unsigned int width, unsigned int height, const char *filepath)
+Image::Image(Window *window, int x, int y, int srcX, int srcY, int srcWidth, int srcHeight, unsigned int width, unsigned int height, const char *filepath)
 {
   this->dst = { x, y, (int)width, (int)height };
+  this->src = { srcX, srcY, srcWidth, srcHeight };
   
   SDL_Surface *sur = IMG_Load(filepath);
   texture = SDL_CreateTextureFromSurface(window->getRenderer(), sur);
@@ -22,5 +23,5 @@ Image::Image(Window *window, int x, int y, unsigned int width, unsigned int heig
 // Draws the image onto the screen
 void Image::render()
 {
-  SDL_RenderCopy(window->getRenderer(), texture, nullptr, &dst);
+  SDL_RenderCopy(window->getRenderer(), texture, &src, &dst);
 }

@@ -5,6 +5,7 @@
 
 #include "include/window.hh"
 #include "include/image.hh"
+#include "include/road.hh"
 
 // FPS limiting variables
 double frameStart, frameTime;
@@ -15,17 +16,31 @@ SDL_Event event;
 int main(int argc, char *argv[])
 {
   Window *window = new Window(1280, 720, "Cities Horizon");
-  Image *image = new Image(window, 10, 10, 44, 65, "../res/gfx/roads.png");
+  Road *road = new Road(window);
 
-  while (true)
+  bool running = true;
+  while (running)
   {
     frameStart = SDL_GetTicks();
 
     // Event handling
     if (SDL_PollEvent(&event))
     {
-      if (event.type == SDL_QUIT)
+      switch (event.type)
       {
+      case SDL_QUIT:
+        running = false;
+        break;
+      case SDL_KEYDOWN:
+        switch (event.key.keysym.sym)
+        {
+        case SDLK_F2:
+          road->addRoad(RoadType::SIMPLE_PAVED);
+          break;
+        case SDLK_F1:
+          road->addRoad(RoadType::SIMPLE_GRAVEL);
+          break;
+        }
         break;
       }
     }
@@ -33,7 +48,7 @@ int main(int argc, char *argv[])
     // Rendering
     window->clear();
 
-    image->render();
+    road->render();
 
     window->display();
 
