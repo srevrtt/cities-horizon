@@ -14,4 +14,6 @@ public:
   void clear();
   void display();
   void close();
+
+  SDL_Renderer *getRenderer();
 };

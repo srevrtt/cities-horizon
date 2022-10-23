@@ -28,7 +28,7 @@ Window::Window(unsigned int width, unsigned int height, std::string title)
 
     if (!window)
     {
-      std::cout << "Error: Failed to create a Window.\n";
+      std::cout << "Error: Failed to create a window.\n";
       exit(1);
     }
 
@@ -47,7 +47,7 @@ Window::Window(unsigned int width, unsigned int height, std::string title)
 // Clears the window's renderer
 void Window::clear()
 {
-  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+  SDL_SetRenderDrawColor(renderer, 63, 235, 100, 255);
   SDL_RenderClear(renderer);
 }
 
@@ -68,4 +68,10 @@ void Window::close()
 
     delete this;
   }
+}
+
+// Gets the window's renderer for drawing images, text, etc.
+SDL_Renderer *Window::getRenderer()
+{
+  return renderer;
 }

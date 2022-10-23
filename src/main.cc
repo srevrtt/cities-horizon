@@ -2,7 +2,9 @@
 #include <string>
 
 #include <SDL.h>
+
 #include "include/window.hh"
+#include "include/image.hh"
 
 // FPS limiting variables
 double frameStart, frameTime;
@@ -13,6 +15,7 @@ SDL_Event event;
 int main(int argc, char *argv[])
 {
   Window *window = new Window(1280, 720, "Cities Horizon");
+  Image *image = new Image(window, 10, 10, 44, 65, "../res/gfx/roads.png");
 
   while (true)
   {
@@ -29,6 +32,9 @@ int main(int argc, char *argv[])
 
     // Rendering
     window->clear();
+
+    image->render();
+
     window->display();
 
     // FPS limiting
