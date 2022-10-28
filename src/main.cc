@@ -6,6 +6,7 @@
 #include "include/window.hh"
 #include "include/image.hh"
 #include "include/road.hh"
+#include "include/text.hh"
 
 // FPS limiting variables
 double frameStart, frameTime;
@@ -17,6 +18,7 @@ int main(int argc, char *argv[])
 {
   Window *window = new Window(1280, 720, "Cities Horizon");
   Road *road = new Road(window);
+  Text *testText = new Text(10, 10, "ABCDEFGHIJKL", window);
 
   bool running = true;
   while (running)
@@ -49,6 +51,7 @@ int main(int argc, char *argv[])
     window->clear();
 
     road->render();
+    testText->render();
 
     window->display();
 
