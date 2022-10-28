@@ -21,8 +21,6 @@ Text::Text(int x, int y, std::string text, Window *window)
       newX += 48;
     }
 
-    // TODO: exceptions for letters M, O, Q, and W
-
     if (islower(chr))
     {
       img = new Image(window, newX, y, (chr - 97) * 6, 14, 6, 8, 42, 49, "../res/gfx/font.png");
@@ -31,20 +29,8 @@ Text::Text(int x, int y, std::string text, Window *window)
 
     if (isupper(chr))
     {
-      img = new Image(window, newX, y, (chr - 65) * 6, 7, 6, 8, 42, 49, "../res/gfx/font.png");
-
-      if (chr == 'I')
-      {
-        newX += 12;
-      }
-      else if (chr == 'F')
-      {
-        newX += 36;
-      }
-      else
-      {
-        newX += 42;
-      }
+      img = new Image(window, newX, y, (chr - 65) * 8, 7, 8, 8, 56, 49, "../res/gfx/font.png");
+      newX += 50;
     }
 
     chars.push_back(img);
