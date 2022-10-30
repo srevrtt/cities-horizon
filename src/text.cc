@@ -15,14 +15,30 @@ Text::Text(int x, int y, std::string text, Window *window)
 
     if (isdigit(chr))
     {
-      img = new Image(window, newX, y, (chr - 48) * 6, 0, 6, 7, 42, 49, "../res/gfx/font.png");
-      newX += 48;
+      img = new Image(window, newX, y, (chr - 48) * 11, 0, 11, 8, 55, 49, "../res/gfx/font.png");
+      newX += 40;
     }
 
     if (islower(chr))
     {
-      img = new Image(window, newX, y, (chr - 97) * 6, 14, 6, 8, 42, 49, "../res/gfx/font.png");
-      newX += 97;
+      img = new Image(window, newX, y, (chr - 97) * 11, 18, 11, 8, 55, 49, "../res/gfx/font.png");
+
+      if (chr == 'i' || chr == 'l')
+      {
+        newX += 20;
+      }
+      else if (chr == 'w' || chr == 'o' || chr == 'n' || chr == 'v')
+      {
+        newX += 45;
+      }
+      else if (chr == 'm' || chr == 'w')
+      {
+        newX += 50;
+      }
+      else
+      {
+        newX += 40;
+      }
     }
 
     if (isupper(chr))
@@ -33,7 +49,7 @@ Text::Text(int x, int y, std::string text, Window *window)
       {
         newX += 20;
       }
-      else if (chr == 'W')
+      else if (chr == 'W' || chr == 'M')
       {
         newX += 45;
       }

@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 {
   Window *window = new Window(1280, 720, "Cities Horizon");
   Road *road = new Road(window);
-  Text *testText = new Text(10, 10, "QWERTYUIOPASDFGHJKLZXCVBNM", window);
+  Text *testText = new Text(10, 10, "YSGA1aS2s", window);
 
   bool running = true;
   while (running)
