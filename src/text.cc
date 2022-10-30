@@ -15,8 +15,6 @@ Text::Text(int x, int y, std::string text, Window *window)
 
     if (isdigit(chr))
     {
-      std::cout << (int)chr << '\n';
-
       img = new Image(window, newX, y, (chr - 48) * 6, 0, 6, 7, 42, 49, "../res/gfx/font.png");
       newX += 48;
     }
@@ -29,8 +27,20 @@ Text::Text(int x, int y, std::string text, Window *window)
 
     if (isupper(chr))
     {
-      img = new Image(window, newX, y, (chr - 65) * 8, 7, 8, 8, 56, 49, "../res/gfx/font.png");
-      newX += 50;
+      img = new Image(window, newX, y, (chr - 65) * 11, 9, 11, 8, 55, 49, "../res/gfx/font.png");
+
+      if (chr == 'I')
+      {
+        newX += 20;
+      }
+      else if (chr == 'W')
+      {
+        newX += 45;
+      }
+      else
+      {
+        newX += 40;
+      }
     }
 
     chars.push_back(img);
